@@ -60,15 +60,15 @@ router.post('/register', function(req, res, next) {
 			name: name,
 			email: email,
 			username: username,
-			pawssword: password,
-			pawssword2: password2
+			password: password,
+			password2: password2
 		});
 	} else {
 		var newUser = new User({
 			name: name,
 			email: email,
 			username: username,
-			pawssword: password,
+			password: password,
 			profileimage: profileImageName
 		});
 
