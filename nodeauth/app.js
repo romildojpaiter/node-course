@@ -73,6 +73,12 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Processo que publica para toda a aplicação a variavel
+// Deixando a variavel user disponivel para todo o sistema.
+app.get('*', function(req, res, next) {
+  res.locals.user = req.user || null;
+  next();
+});
 
 app.use('/', routes);
 app.use('/users', users);
