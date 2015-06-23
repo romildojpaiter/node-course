@@ -14,9 +14,10 @@ body {
 .container{
 	width: 750px;
 	border: 1px solid #ccc;
+	border-top: 5px solid #83cd39; 
 	margin: 20px auto;
 	padding: 20px;
-	border-top: #83cd39; 
+	
 }
 
 .clr{
