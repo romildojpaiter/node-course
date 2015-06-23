@@ -66,3 +66,7 @@ nav a.current, nav a:hover{
 	background: #83cd39;
 	color: #000;
 }
+
+footer{
+	padding-top: 20px;
+}
