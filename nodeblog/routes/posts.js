@@ -29,7 +29,7 @@ router.post('/add', function(req, res, next){
 	}
 
 	// Form validator
-	req.checkBody();
+	req.checkBody('title', "Title field is required").notEmpty();
 });
 
 module.exports = router;
