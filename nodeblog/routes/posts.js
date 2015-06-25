@@ -4,9 +4,15 @@ var mongo = require('mongodb');
 var db = require('monk')('localhost/nodeblog');
 
 router.get('/add', function(req, res, next){
-	res.render('addpost', {
-		"title": "Add Post",	
+	var categories = db.get('categories');
+	categories.find({}, {}, function(err, categories){
+		console.log(categories);
+		res.render('addpost', {
+			'title': "Add Post",
+			'categories': categories	
+		});
 	});
+
 });
 
 router.post('/add', function(req, res, next){
@@ -30,6 +36,40 @@ router.post('/add', function(req, res, next){
 
 	// Form validator
 	req.checkBody('title', "Title field is required").notEmpty();
+	req.checkBody('body', "Body field is required").notEmpty();
+
+	// Check Errors
+	var errors = req.validationErrors();
+
+	if(errors){
+		res.render('addpost', {
+			"errors": errors,
+			"title": title,
+			"body": body
+		});
+	} else {
+		var posts = db.get('posts');
+
+		// Submit to DB
+		posts.insert({
+			'title': title,
+			'body': body,
+			'category': category,
+			'date': date,
+			'author': author,
+			'mainimage': mainImageName
+		}, function(err, post){
+			if (err){
+				res.send("There was an issue submitting the post");
+			} else {
+				req.flash('success', "Post Submited");
+				
+				res.location('/');
+				res.redirect('/');
+			}
+
+		});
+	}
 });
 
 module.exports = router;

@@ -11,8 +11,11 @@ block content
 			label Title:
 			input.form-control(name='title', type='text')
 		.form-group
-			label Title:
+			label Category:
 			select.form-control(name='category')
+				if categories !== null
+					each category, i in categories
+						option(value='#{category.title}') #{category.title}
 		.form-group
 			label Body:
 			textarea.form-control(name='body', id='body')
@@ -24,4 +27,8 @@ block content
 			select.form-control(name='author')
 				option(value='Brad Traversy') Brad Traversy
 				option(value='John Doe') John Doe
-input.btn.btn-default(name='submit', type='submit', value='Save')
+		input.btn.btn-default(name='submit', type='submit', value='Save')
+		script(src='/ckeditor/ckeditor.js')
+		script
+			| CKEDITOR.replace('body');
+
