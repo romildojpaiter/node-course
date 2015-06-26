@@ -6,7 +6,6 @@ var db = require('monk')('localhost/nodeblog');
 router.get('/add', function(req, res, next){
 	var categories = db.get('categories');
 	categories.find({}, {}, function(err, categories){
-		console.log(categories);
 		res.render('addpost', {
 			'title': "Add Post",
 			'categories': categories	
@@ -63,11 +62,9 @@ router.post('/add', function(req, res, next){
 				res.send("There was an issue submitting the post");
 			} else {
 				req.flash('success', "Post Submited");
-				
 				res.location('/');
 				res.redirect('/');
 			}
-
 		});
 	}
 });
