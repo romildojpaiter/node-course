@@ -70,6 +70,9 @@ nav a.current, nav a:hover{
 
 footer{
 	padding-top: 30px;
+	text-align: center;
+	height: 30px;
+	border-top: 1px solid gray;
 }
 
 .meta{
@@ -90,6 +93,10 @@ a.more{
 .post{
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 20px;
+}
+
+.post img{
+	width: 100%;
 }
 
 input, select, textarea{
@@ -142,3 +149,4 @@ ul.success li{
 	border-color: #d6e9c6;
 	list-style: none;
 }
+
