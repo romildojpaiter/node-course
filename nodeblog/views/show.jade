@@ -11,7 +11,7 @@ block content
 		hr
 		if post.comments
 			h3 Comments
-			each comments, i in comments
+			each comment, i in post.comments
 				.comment
 					p.comment-name #{comment.name}
 					p.comment-text #{comment.body}
@@ -32,5 +32,5 @@ block content
 			.form-group
 				label Body
 				textarea.form-control(id='body', name='body')
-		br
-		input.btn.btn-default(name='submit', type='submit', value='Save Comment')
+			br
+			input.btn.btn-default(name='submit', type='submit', value='Save Comment')
